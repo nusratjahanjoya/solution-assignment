@@ -55,7 +55,7 @@ Person ইন্টারফেস দুইবার ঘোষণা করা 
 Types-এর ক্ষেত্রে এটি সম্ভব নয় — একই টাইপ আবার ঘোষণা করলে TypeScript ত্রুটি দেখায়।
 
 ব্যবহারের ক্ষেত্র ও নমনীয়তা
-Interfaces ক্লাস বা অবজেক্টের কাঠামো নির্ধারণে ভালো, বিশেষ করে অবজেক্ট ওরিয়েন্টেড প্রোগ্রামিংয়ে।
+Interfaces ক্লাস কাঠামো নির্ধারণে ভালো, বিশেষ করে অবজেক্ট ওরিয়েন্টেড প্রোগ্রামিংয়ে।
 
 Types আরও নমনীয়, যেমন: union, intersection, বা conditional টাইপের মতো জটিল টাইপ সংজ্ঞায়নে ব্যবহার করা যায়।
 
@@ -68,7 +68,7 @@ interface Person {
 
 type PersonKeys = keyof Person;
 // ফলাফল: "name" | "age" | "address"
-keyof ব্যবহার করে আপনি অবজেক্টের কী নিয়ে আরও টাইপ-সেফ কোড লিখতে পারেন — বিশেষ করে যখন কী ডাইনামিকভাবে অ্যাক্সেস করা হয়।
+keyof ব্যবহার করে অবজেক্টের কী নিয়ে আরও টাইপ-সেফ কোড লিখতে পারেন — বিশেষ করে যখন কী ডাইনামিকভাবে অ্যাক্সেস করা হয়।
 function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
   return obj[key];
 }
@@ -82,7 +82,7 @@ const person = {
 const name = getProperty(person, "name"); // "Alice"
 const age = getProperty(person, "age");   // 30
 এখানে K extends keyof T টাইপ কনস্ট্রেইন্ট ব্যবহার করে নিশ্চিত করা হয়েছে যে key-টি অবশ্যই obj-এর একটি বৈধ কী হতে হবে।
-keyof-কে Mapped Type-এর সঙ্গে ব্যবহার করে আপনি টাইপ ট্রান্সফরমেশন করতে পারেন।
+keyof-কে Mapped Type-এর সঙ্গে ব্যবহার করে টাইপ ট্রান্সফরমেশন।
 type Partial<T> = {
   [K in keyof T]?: T[K];
 };
